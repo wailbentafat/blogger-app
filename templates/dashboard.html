@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Welcome to Your Dashboard, {{ user.username }}</h1>
+
+        <h2>Edit Name</h2>
+        <form method="POST">
+            {{ e_form.hidden_tag() }}
+            {{ e_form.edited_username.label }}
+            {{ e_form.edited_username(class="form-control") }}
+            {% for error in e_form.edited_username.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Update Name</button>
+        </form>
+
+        <h2>Edit Password</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.edited_password.label }}
+            {{ form.edited_password(class="form-control") }}
+            {% for error in form.edited_password.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Update Password</button>
+        </form>
+    </div>
+{% endblock %}
