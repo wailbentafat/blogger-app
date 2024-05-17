@@ -1,6 +1,6 @@
-from flask_login import current_user, login_user, logout, login_required
+from flask_login import current_user, login_user, login_required # logout,
 from flask import render_template, redirect, url_for, flash
-from app import app , db
+import app # from app 
 from app.forms import loginform , editname,editpassword
 from app.functions import check
 from app.models import user
@@ -23,7 +23,7 @@ def lgin():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
-def dashboard():
+def dashboard(db):
       form=editpassword()
       e_form=editname()
       if form.validate_on_submit():
@@ -47,7 +47,7 @@ def dashboard():
 
    
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def index(db):
     form = loginform()#we use it to create new user
 
     if form.validate_on_submit():
